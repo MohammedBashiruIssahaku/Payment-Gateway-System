@@ -11,7 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
-
+/**
+ * Main application class for the Payment Gateway System.
+ * Bootstraps the application and includes a runner that fetches and logs
+ * the account balance from the MTN MoMo API on startup.
+ */
 @SpringBootApplication
 @EnableFeignClients
 @Slf4j
@@ -20,6 +24,11 @@ public class PaymentGatewaySystemApplication {
 
 	private final MomoClient momo;
 
+	/**
+	 * ApplicationRunner bean that runs code after the Spring Boot application has started.
+	 * Fetches the account balance from the MoMo API and logs it.
+	 * @return an {@link ApplicationRunner} instance that performs the task
+	 */
 	@Bean
 	ApplicationRunner applicationRunner()
 	{

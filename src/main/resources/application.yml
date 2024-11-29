@@ -1,0 +1,8 @@
+spring:
+  application:
+  name: Payment-Gateway-System
+
+  server:
+    port: 8282
+
+

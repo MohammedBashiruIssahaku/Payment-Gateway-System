@@ -6,12 +6,27 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Configuration class for the MTN MoMo API integration.
+ * Sets up a Feign request interceptor to include required headers
+ * (authorization, environment, and subscription key) in every API request.
+ */
 @Configuration
 @RequiredArgsConstructor
 public class MomoApiConfig
 {
     private final CreateAccessToken createtoken;
 
+    /**
+     * Defines a Feign request interceptor to add headers to outgoing API requests.
+     *
+     * <p>Headers added:</p>
+     * - Authorization: Bearer token obtained from {@link CreateAccessToken#Token()}
+     * - X-Target-Environment: Specifies the target environment (sandbox in this case).
+     * - Ocp-Apim-Subscription-Key: Unique subscription key for API access.
+     *
+     * @return a configured {@link RequestInterceptor} instance
+     */
     @Bean
     RequestInterceptor requestInterceptor()
     {
